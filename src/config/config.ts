@@ -3,13 +3,13 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 
-type NodeEnv = 'development' | 'production' | 'test';
+type NodeEnv = 'development' | 'production' | 'test' | 'docker';
 function requireNodeEnv(): NodeEnv {
     const env = process.env.NODE_ENV;
     if (!env) {
         throw new Error('NODE_ENV is not set');
     }
-    if (['development', 'production', 'test'].includes(env)) {
+    if (['development', 'production', 'test', 'docker'].includes(env)) {
         return env as NodeEnv;
     }
     throw new Error(`Invalid NODE_ENV: ${env} - must be one of 'development', 'production', or 'test'`);
