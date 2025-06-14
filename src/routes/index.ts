@@ -8,6 +8,7 @@ import User from "../dbModels/UserModel";
 import validateBody from "../middleware/validateBody";
 import changePasswordSchema from "../validation/schemas/changePassword";
 import { requireAuth } from "../middleware/requireAuth";
+import { createHealthResponse } from "../utils/responseHelpers";
 
 const router = Router();
 
@@ -27,7 +28,7 @@ const router = Router();
  *               $ref: '#/components/schemas/HealthResponse'
  */
 router.get('/health', (_req, res) => {
-    res.status(200).json({ status: 'ok' });
+    res.status(200).json(createHealthResponse());
 });
 
 /**
